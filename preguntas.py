@@ -72,7 +72,46 @@ def pregunta_03():
     ]
 
     """
-    return
+    df = open("data.csv", "r").readlines()
+    df = [z.replace("\n","") for z in df]
+    df = [z.split("\t") for z in df]
+    print(df)
+
+    ListA = [z for z in df if z[0]=="A"]
+    print(ListA)
+    ListB = [z for z in df if z[0]=="B"]
+    ListC = [z for z in df if z[0]=="C"]
+    ListD = [z for z in df if z[0]=="D"]
+    ListE = [z for z in df if z[0]=="E"]
+
+    ColA= [z[1] for z in ListA[0:]]
+    ColB= [z[1] for z in ListB[0:]]
+    ColC= [z[1] for z in ListC[0:]]
+    ColD= [z[1] for z in ListC[0:]]
+    ColE= [z[1] for z in ListE[0:]]
+
+    sumA = 0
+    sumB = 0
+    sumC = 0
+    sumD = 0
+    sumE = 0
+
+    for i in ColA:
+        sumA = sumA + int(i)
+        print(sumA)
+    for i in ColB:
+        sumB = sumB + int(i)
+        print(sumB)
+    for i in ColD:
+        sumD = sumD + int(i)
+        print(sumA)
+    for i in ColE:
+        sumE = sumE + int(i)
+        print(sumE)
+
+    ListO = [('A', sumA),('B', sumB), ('C', sumC),('D', sumD), ('E', sumE)]
+    
+    return ListO
 
 
 def pregunta_04():
