@@ -36,7 +36,7 @@ def pregunta_01():
     suma = 0
     for num in columns:
         suma += int(num[1])
-    return
+    return suma
 
 
 def pregunta_02():
