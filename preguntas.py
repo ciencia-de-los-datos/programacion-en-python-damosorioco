@@ -75,10 +75,9 @@ def pregunta_03():
     df = open("data.csv", "r").readlines()
     df = [z.replace("\n","") for z in df]
     df = [z.split("\t") for z in df]
-    print(df)
+
 
     ListA = [z for z in df if z[0]=="A"]
-    print(ListA)
     ListB = [z for z in df if z[0]=="B"]
     ListC = [z for z in df if z[0]=="C"]
     ListD = [z for z in df if z[0]=="D"]
