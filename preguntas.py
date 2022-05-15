@@ -110,7 +110,7 @@ def pregunta_03():
         print(sumE)
 
     ListO = [('A', sumA),('B', sumB), ('C', sumC),('D', sumD), ('E', sumE)]
-    
+     
     return ListO
 
 
