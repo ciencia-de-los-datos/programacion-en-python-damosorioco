@@ -13,6 +13,17 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 """
 
 
+
+import csv
+
+with open("data.csv",newline='') as f:
+    datos = csv.reader(f, delimiter='\t')
+    columns = list(datos)
+
+
+
+
+
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.
@@ -21,6 +32,10 @@ def pregunta_01():
     214
 
     """
+
+    suma = 0
+    for num in columns:
+        suma += int(num[1])
     return
 
 
