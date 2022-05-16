@@ -182,13 +182,11 @@ def pregunta_04():
         else: 
             freq[n] =1
 
-    diccionario = dict(freq.items(), key=lambda item: item[0])
+    diccionario = dict(sorted(freq.items(), key=lambda item: item[0]))
     tupla = list(zip(diccionario.keys(), diccionario.values()))
     print(tupla)
-    sorted_tuplas = sorted(tupla)
-    print(sorted_tuplas)
         
-    return sorted_tuplas
+    return tupla
 
 
 def pregunta_05():
