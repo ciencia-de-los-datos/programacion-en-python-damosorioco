@@ -157,7 +157,38 @@ def pregunta_04():
     ]
 
     """
-    return
+    import csv
+    from collections import Counter
+    from operator import itemgetter 
+
+    with open("data.csv",newline='') as f:
+        datos = csv.reader(f, delimiter='\t')
+        type(datos)
+        columns = list(datos)
+        print(columns)
+        
+        date = list()
+    for i in columns:
+        a= i[2]
+        date.append(a)
+    cant = list()
+    for x in date:
+        c=x[5:7]
+        cant.append(c)
+    freq={}
+    for n in cant:
+        if n in freq:
+            freq[n] += 1
+        else: 
+            freq[n] =1
+
+    diccionario = dict(freq.items(), key=lambda item: item[0])
+    tupla = list(zip(diccionario.keys(), diccionario.values()))
+    print(tupla)
+    sorted_tuplas = sorted(tupla)
+    print(sorted_tuplas)
+        
+    return sorted_tuplas
 
 
 def pregunta_05():
