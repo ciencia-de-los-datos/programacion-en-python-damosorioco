@@ -54,7 +54,29 @@ def pregunta_02():
     ]
 
     """
-    return
+    with open("data.csv",newline='') as f:
+        datos = csv.reader(f, delimiter='\t')
+        columns = list(datos)
+        print(columns)
+
+        data = [row[0] for row in columns]
+        print(data)
+
+        df = dict()
+
+        for letter in data:
+            if letter in df.keys():
+                df[letter]= df[letter]+1
+            else:
+                df[letter]=1
+        print(df)
+
+        tuplas = list(zip(df.keys(),df.values()))
+        print(tuplas)
+        sorted_tuplas = sorted(tuplas)
+        print(sorted_tuplas)
+    
+    return sorted_tuplas
 
 
 def pregunta_03():
