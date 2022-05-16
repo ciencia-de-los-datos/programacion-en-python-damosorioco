@@ -94,45 +94,45 @@ def pregunta_03():
     ]
 
     """
-    df = open("data.csv", "r").readlines()
-    df = [z.replace("\n","") for z in df]
-    df = [z.split("\t") for z in df]
+    import csv
+    from collections import Counter
+    from operator import itemgetter 
+
+    with open("data.csv",newline='') as f:
+        datos = csv.reader(f, delimiter='\t')
+        columns = list(datos)
+        print(columns)
+
+        letras = list(row[0] for row in columns)
+        print(letras)
+        cant = list(row[1] for row in columns)
+        print(cant)
+
+        acumulador = list()
+        print(acumulador)
 
 
-    ListA = [z for z in df if z[0]=="A"]
-    ListB = [z for z in df if z[0]=="B"]
-    ListC = [z for z in df if z[0]=="C"]
-    ListD = [z for z in df if z[0]=="D"]
-    ListE = [z for z in df if z[0]=="E"]
 
-    ColA= [z[1] for z in ListA[0:]]
-    ColB= [z[1] for z in ListB[0:]]
-    ColC= [z[1] for z in ListC[0:]]
-    ColD= [z[1] for z in ListC[0:]]
-    ColE= [z[1] for z in ListE[0:]]
+        for i in columns:
+            a = i[:2]
+            acumulador.append(a)
+        df = dict()
+        for row in acumulador:
+            key = row[0]
+            value = int(row[1])
+            if key in df:
+                df[key] +=value
+            else:
+                df[key] = value
 
-    sumA = 0
-    sumB = 0
-    sumC = 0
-    sumD = 0
-    sumE = 0
+            print(df)
 
-    for i in ColA:
-        sumA = sumA + int(i)
-        print(sumA)
-    for i in ColB:
-        sumB = sumB + int(i)
-        print(sumB)
-    for i in ColD:
-        sumD = sumD + int(i)
-        print(sumA)
-    for i in ColE:
-        sumE = sumE + int(i)
-        print(sumE)
-
-    ListO = [('A', sumA),('B', sumB), ('C', sumC),('D', sumD), ('E', sumE)]
+        diccionario = dict(sorted(df.items(), key = lambda item: item[0]))
+        print(diccionario)
+        lista_final = list(zip(diccionario.keys(), diccionario.values()))
+        print(lista_final)
      
-    return ListO
+    return lista_final
 
 
 def pregunta_04():
