@@ -261,22 +261,22 @@ def pregunta_06():
     from operator import itemgetter
     with open ("data.csv", "r") as file:
         datos = file.readlines()
-    datos1 = list(row[:-1] for row in datos)
+    datos1 = [row[:-1] for row in datos]
     print(datos1)
-    datos2 = list(str(row).split("\t")[-1] for row in datos1)
+    datos2 = [str(row).split("\t")[-1] for row in datos1]
     print(datos2)
     datos3 = []
     datos4 = []
 
     for row in datos2:
             q = row.split(",")
-            datos3.append(q)
+            datos3.extend(q)
     for row in datos3:
             w = row.split(":")
-            datos4.append(w)
-    a = datos3[0::2]
+            datos4.extend(w)
+    a = datos4[0::2]
     print(a)
-    s = datos3[1::2]
+    s = datos4[1::2]
     print(s)
     sa = zip(a,s)
     print(sa)
@@ -296,7 +296,7 @@ def pregunta_06():
     print(df)
 
     df1 = [(key,min(value),max(value)) for key,value in df.items()]
-    df1 = sorted(df, key = itemgetter(0))
+    df1 = sorted(df1, key = itemgetter(0))
     print(df1)
     
     
