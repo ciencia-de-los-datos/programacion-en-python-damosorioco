@@ -324,7 +324,39 @@ def pregunta_07():
     ]
 
     """
-    return
+    import csv 
+    from operator import itemgetter
+    from collections import Counter
+    with open ("data.csv", "r") as file:
+        datos = csv.reader(file, delimiter = "\t")
+        columns = list(datos)
+        print(columns)
+    list_A = list(row[0] for row in columns)
+    print(list_A)
+    list_B = list(int(row[1]) for row in columns)
+    print(list_B)
+    list_C = list(zip(list_A, list_B))
+    print(list_C)
+
+    df = dict()
+
+    for row in list_C:
+        key=row[1]
+        value = []
+        value2 = row[0]
+        if key in df:
+            df[key].append(value2)
+        else:
+            df[key]=value
+            df[key].append(value2)
+    print(df)
+
+    df = list(zip(df.keys(), df.values()))
+    print(df)
+    df = sorted(df, reverse= False)
+    print(df)
+    
+    return df
 
 
 def pregunta_08():
