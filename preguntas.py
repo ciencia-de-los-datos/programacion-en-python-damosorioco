@@ -32,10 +32,12 @@ def pregunta_01():
     214
 
     """
-
     suma = 0
     for num in columns:
         suma += int(num[1])
+    print(suma)
+
+    
     return suma
 
 
