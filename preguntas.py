@@ -391,7 +391,7 @@ def pregunta_08():
     print(list_A)
     list_B = list(int(row[1]) for row in columns)
     print(list_B)
-    list_C = list(zip(list_A, list_B))
+    list_C = set(list(zip(list_A, list_B)))
     print(list_C)
     list_C = sorted(list_C, reverse= False)
     print(list_C)
