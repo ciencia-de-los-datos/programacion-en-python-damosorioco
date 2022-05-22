@@ -204,7 +204,30 @@ def pregunta_05():
     ]
 
     """
-    return
+    import csv
+    from collections import Counter
+    from operator import itemgetter
+    with open("data.csv",newline='') as t:
+        data = csv.reader(t,delimiter ="\t")
+        columns =list(data)
+    letras = [row[0] for row in columns]
+    cant = [int(fila[1]) for fila in columns]
+    letras_cant = list(zip(letras,cant))
+    df= {}
+    for row in letras_cant:
+        key = row[0]
+        valor = []
+        valor1 = row[1]
+        if key in df:
+            df[key].append(valor1)
+        else:
+            df[key]=valor
+            df[key].append(valor1)
+    df = dict(key,max(valor),min(valor) for key,valor in df.items())
+    print(df)
+    df = tuple(zip(df.keys(),df.values))
+    
+    return df
 
 
 def pregunta_06():
