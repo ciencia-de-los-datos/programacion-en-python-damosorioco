@@ -54,6 +54,9 @@ def pregunta_02():
     ]
 
     """
+    from operator import itemgetter
+    import csv
+
     with open("data.csv",newline='') as f:
         datos = csv.reader(f, delimiter='\t')
         columns = list(datos)
@@ -110,8 +113,6 @@ def pregunta_03():
 
         acumulador = list()
         print(acumulador)
-
-
 
         for i in columns:
             a = i[:2]
