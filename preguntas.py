@@ -257,7 +257,50 @@ def pregunta_06():
     ]
 
     """
-    return
+    import csv 
+    from operator import itemgetter
+    with open ("data.csv", "r") as file:
+        datos = file.readlines()
+    datos1 = list(row[:-1] for row in datos)
+    print(datos1)
+    datos2 = list(str(row).split("\t")[-1] for row in datos1)
+    print(datos2)
+    datos3 = []
+    datos4 = []
+
+    for row in datos2:
+            q = row.split(",")
+            datos3.append(q)
+    for row in datos3:
+            w = row.split(":")
+            datos4.append(w)
+    a = datos3[0::2]
+    print(a)
+    s = datos3[1::2]
+    print(s)
+    sa = zip(a,s)
+    print(sa)
+
+    df = {}
+
+    for row in sa:
+        key = row[0]
+        value = []
+        valori = int(row[1])
+        if key in df:
+            df[key].append(valori)
+        else:
+            df[key]=value
+            df[key].append(valori)
+    
+    print(df)
+
+    df1 = [(key,min(value),max(value)) for key,value in df.items()]
+    df1 = sorted(df, key = itemgetter(0))
+    print(df1)
+    
+    
+    return df1
 
 
 def pregunta_07():
