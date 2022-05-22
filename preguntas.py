@@ -226,9 +226,11 @@ def pregunta_05():
         else:
             df[key]=valor
             df[key].append(valor1)
-    df = dict(key,max(valor),min(valor) for key,valor in df.items())
+    
+    df = list((key,max(valor),min(valor)) for key,valor in df.items())
     print(df)
-    df = tuple(zip(df.keys(),df.values))
+    df = sorted(df)
+    print(df)
     
     return df
 
