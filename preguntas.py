@@ -443,7 +443,32 @@ def pregunta_09():
     }
 
     """
-    return
+    with open ("data.csv","r") as file:
+        data = file.readlines()
+    data1= [row[:-1] for row in data]
+    data2 = [str(row).split("\t")[-1] for row in data1]
+    data3 = []
+    data4=[]
+    for row in data2:
+        a= row.split(",")
+        data3.extend(a)
+    for row in data3:
+        b= row.split(":")
+        data4.extend(b)
+    x= data4[0::2]
+    y = data4[1::2]
+    xy = zip(x,y)
+    diccionario = {}
+    for row in xy:
+        key = row[0]
+        if key in diccionario:
+            diccionario[key] += 1
+        else:
+            diccionario[key] = 1
+    diccionario1 = dict(sorted(diccionario.items(), key=lambda item: item[0]))
+    print(diccionario1)
+    
+    return diccionario1
 
 
 def pregunta_10():
