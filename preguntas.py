@@ -524,7 +524,39 @@ def pregunta_11():
 
 
     """
-    return
+    
+    import csv
+    from operator import itemgetter
+    with open ("data.csv","r") as file:
+        data = file.readlines()
+    data1= [row for row in data]
+    data2 = [str(row).split("\t")[-2] for row in data1]
+    data3 = [row[2] for row in data]
+    data4 =[]
+    for row1,row2 in zip(data2,data3):
+        a = str(row1+","+row2)
+        data4.append(a.split(","))
+
+    data5 = [str(row).split(",") for row in data4]
+    data6 =[]
+    for row in data5:
+        for value in row[:-1]:
+            a= list(value + "," + row[-1])
+            data6.append(a)
+    data7 =[row[2] for row in data6]
+    data8 =[int(row[7]) for row in data6]
+    data9 = zip(data7,data8)
+    sumatoria= {}
+    for row in data9:
+        key = row[0]
+        value = int(row[1])
+        if key in sumatoria:
+            sumatoria[key] += value
+        else:
+            sumatoria[key] = value
+
+    diccionario = dict(sorted(sumatoria.items(), key=lambda item: item[0]))
+    return diccionario
 
 
 def pregunta_12():
@@ -542,4 +574,27 @@ def pregunta_12():
     }
 
     """
-    return
+    import csv
+    with open ("data.csv","r") as file:
+        data = file.readlines()
+
+    data = [row.replace('\n','')for row in data]
+    data1 = [(row.split('\t')[0],(row.split('\t')[-1])) for row in data]
+    data2 = []
+    for i in data1:
+        data3 = i[1].split(",")
+        for h in data3:
+            data4 = int(h.split(":")[1])
+            data5= (i[0], data4)
+            data2.append(data5)
+    diccionario = {}
+    for row in data2:
+        key = row[0]
+        valor = int(row[1])
+        if key in diccionario:
+            diccionario[key] += valor
+        else:
+            diccionario[key] = valor
+
+    diccionario1 = dict(sorted(diccionario.items(), key=lambda item: item[0]))
+    return diccionario1
