@@ -489,7 +489,21 @@ def pregunta_10():
 
 
     """
-    return
+    import csv
+    from operator import itemgetter
+    with open ("data.csv","r") as file:
+        data = file.readlines()
+    data1= [row for row in data]
+    data2 = [str(row).split("\t")[-1].split(",") for row in data1]
+    data3 = [str(row).split("\t")[-2].split(",") for row in data1]
+    data4 = [len(row) for row in data2]
+    data5 = [row[0] for row in data]
+    data6 = [len(row) for row in data3]
+    lista=zip(data5,data6,data4)
+    
+    
+    
+    return list(lista)
 
 
 def pregunta_11():
